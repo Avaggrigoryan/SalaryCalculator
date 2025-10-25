@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-  SafeAreaView,
   Switch,
 } from 'react-native';
 import { RefreshCcw, DollarSign, Cpu } from './Icons';
@@ -69,8 +68,8 @@ const SalaryCalculator = () => {
   const resultLabel = isGrossInput ? t.result_label_net : t.result_label_gross;
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         {/* Language Selector */}
         <View style={styles.languageSelector}>
           <View style={styles.languageButtons}>
@@ -274,7 +273,7 @@ const SalaryCalculator = () => {
           <Text style={styles.footerText}>{t.footer_note}</Text>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -282,9 +281,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f9fafb',
+    paddingTop: 40,
   },
   scrollView: {
     flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 30,
   },
   languageSelector: {
     paddingHorizontal: 16,
